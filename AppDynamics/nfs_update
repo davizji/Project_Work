@@ -1,0 +1,12 @@
+#!/bin/ksh
+changefs(){
+echo "Stoping agent .. "
+op adma stop
+echo "Changing filesystem .. "
+read fs?"Please provide pathname :"
+
+sed -i "s#fileSystem: \"/sbclocal/data\"#fileSystem: \"$fs\"#" /opt/adma/monitors/ProcessMonitor/config.yml
+echo "Starting agent .. "
+op adma start
+}
+changefs
