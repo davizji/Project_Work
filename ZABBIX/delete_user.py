@@ -1,22 +1,20 @@
 from pyzabbix import ZabbixAPI
 
-zabbix_url = 'zabbix.url/api_jsonrpc.php'
-zabbix_user = 'username'
-zabbix_password = 'password'
+zabbix_url = 'zabbix_url/api_jsonrpc.php'
+zabbix_user = 'zabbix_user'
+zabbix_password = 'zabbix_password'
 
-# Logging
 zapi = ZabbixAPI(zabbix_url)
 zapi.login(zabbix_user, zabbix_password)
 
-# Get user ID login_name
-users = zapi.user.get(filter={'username': 'test'})
+username = "test5"
+
+users = zapi.user.get(filter={'username': username })
 if not users:
-    print("User 'test' not existing or already removed.")
+    print(f"User {username} not existing or already removed.")
 else:
     test_id = users[0]['userid']
-    # Remove user
     zapi.user.delete(test_id)
-    print("User 'test' removed.")
+    print(f"User {username} removed.")
 
 print("Ready.")
-
