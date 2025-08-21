@@ -1,0 +1,5 @@
+[
+  {"alias": "test3", "passwd": "testtest123", "usrgrps": [{"usrgrpid": "8"}], "roleids": "4"},
+  {"alias": "test4", "passwd": "testtest124", "usrgrps": [{"usrgrpid": "8"}], "roleids": "4"},
+  {"alias": "test5", "passwd": "testtest124", "usrgrps": [{"usrgrpid": "8"}], "roleids": "4"}
+]
