@@ -1,0 +1,25 @@
+import json
+from pyzabbix import ZabbixAPI
+
+zabbix_url = 'zabbix_url/zabbix/api_jsonrpc.php'
+zabbix_user = 'zabbix_user'
+zabbix_password = 'zabbix_password'
+
+zapi = ZabbixAPI(zabbix_url)
+zapi.login(zabbix_user, zabbix_password)
+
+with open('users_to_add.json', 'r', encoding='utf-8') as file:
+    usernames_to_add = json.load(file)
+    
+for usernames in usernames_to_add:
+    users = zapi.user.get(filter={'username':usernames['alias']})
+    if users:
+        print(f"User {usernames['alias']} are existing")
+    else:
+        zapi.user.create(
+                username=usernames['alias'],
+                passwd=usernames['passwd'],
+                usrgrps=usernames['usrgrps'],
+                roleid=usernames['roleids']
+            )
+        print(f"User {usernames['alias']} created")
