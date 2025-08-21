@@ -1,13 +1,14 @@
 from pyzabbix import ZabbixAPI
 
-zabbix_url = 'zabbix_url/zabbix/api_jsonrpc.php'
-zabbix_user = 'zabbix_user'
-zabbix_password = 'zabbix_password'
+zabbix_url = 'http://10.16.92.101/zabbix/api_jsonrpc.php'
+zabbix_user = 'dawid.wrobel@damovo.com'
+zabbix_password = 'Zabbix123?'
 
 zapi = ZabbixAPI(zabbix_url)
 zapi.login(zabbix_user, zabbix_password)
 
-usernames_to_delete = ['test3', 'test4', 'test5']
+user_input = input("Enter the names of users to be deleted, separated by commas: ")
+usernames_to_delete = [u.strip() for u in user_input.split(',')]
 
 for username in usernames_to_delete:
     users = zapi.user.get(filter={'username': username})
