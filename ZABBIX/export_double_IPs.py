@@ -16,7 +16,6 @@ def main():
 
     for host in hosts:
         interfaces = host.get("interfaces", [])
-        print(interfaces)
         for intf in interfaces:
             if intf.get("useip") == "1":
                 ip = intf.get("ip")
