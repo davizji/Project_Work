@@ -1,8 +1,8 @@
 from pyzabbix import ZabbixAPI
 
-zabbix_url = 'http://10.16.92.101/zabbix/api_jsonrpc.php'
-zabbix_user = 'dawid.wrobel@damovo.com'
-zabbix_password = 'Zabbix123?'
+zabbix_url = 'zabbix_url/zabbix/api_jsonrpc.php'
+zabbix_user = 'zabbix_user'
+zabbix_password = 'zabbix_password'
 
 zapi = ZabbixAPI(zabbix_url)
 zapi.login(zabbix_user, zabbix_password)
@@ -18,3 +18,4 @@ for username in usernames_to_delete:
         print(f"User {username} removed.")
     else:
         print(f"User {username} not existing or already removed.")
+
